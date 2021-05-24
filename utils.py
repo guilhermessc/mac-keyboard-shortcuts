@@ -97,7 +97,7 @@ def _is_pos_left_2_3(rel_frame):
 
 
 
-def get_frame_position(display_frame=None, current_frame=None):
+def get_rel_frame(display_frame=None, current_frame=None):
 	if display_frame is None:
 		display_frame = get_display_frame()
 
@@ -105,10 +105,16 @@ def get_frame_position(display_frame=None, current_frame=None):
 		current_frame = get_current_frame()
 
 	rel_frame = {}
-	rel_frame['x'] = float(current_frame['x']) / display_frame['w']
+	rel_frame['x'] = float(current_frame['x']-display_frame['x']) / display_frame['w']
 	rel_frame['w'] = float(current_frame['w']) / display_frame['w']
-	rel_frame['y'] = float(current_frame['y']) / display_frame['h']
+	rel_frame['y'] = float(current_frame['y']-display_frame['y']) / display_frame['h']
 	rel_frame['h'] = float(current_frame['h']) / display_frame['h']
+
+	return rel_frame
+
+def get_frame_position(display_frame=None, current_frame=None):
+	
+	rel_frame = get_rel_frame(display_frame, current_frame)
 
 	if _is_pos_right(rel_frame):
 		return positions[6]
