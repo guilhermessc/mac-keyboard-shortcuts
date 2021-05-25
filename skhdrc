@@ -95,13 +95,13 @@
 
 # make floating window fill screen
 ctrl + cmd + alt - up      : yabai -m window --grid 1:1:0:0:1:1
-ctrl + cmd + alt - down    : ~/.config/skhd/reduce_window.py | echo ''
+ctrl + cmd + alt - down    : ~/.config/skhd/reduce_window.py | echo 'reduce_window'
 
-# make floating window fill left-half of screen
-ctrl + cmd + alt - left    : ~/.config/skhd/window_left.py | echo ''
-ctrl + cmd + alt - right   : ~/.config/skhd/window_right.py | echo ''
+# make floating window fill right/left-half of screen but better
+ctrl + cmd + alt - left    : ~/.config/skhd/window_left.py | echo 'window_left'
+ctrl + cmd + alt - right   : ~/.config/skhd/window_right.py | echo 'window_right'
 
-
+# Move windows in a 4:4 grid with the numeric keyboard
 ctrl + cmd + alt - 1      : yabai -m window --grid 2:2:0:1:1:1
 ctrl + cmd + alt - 2      : yabai -m window --grid 2:1:0:1:1:1
 ctrl + cmd + alt - 3      : yabai -m window --grid 2:2:1:1:1:1
@@ -111,7 +111,7 @@ ctrl + cmd + alt - 6      : yabai -m window --grid 1:2:1:0:1:1
 ctrl + cmd + alt - 7      : yabai -m window --grid 2:2:0:0:1:1
 ctrl + cmd + alt - 8      : yabai -m window --grid 2:1:0:0:1:1
 ctrl + cmd + alt - 9      : yabai -m window --grid 2:2:1:0:1:1
-ctrl + cmd + alt - 0      : ~/.config/skhd/reduce_window.py | echo ''
+ctrl + cmd + alt - 0      : ~/.config/skhd/reduce_window.py | echo 'reduce_window'
 
 
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
@@ -124,10 +124,12 @@ ctrl + cmd + alt - 0      : ~/.config/skhd/reduce_window.py | echo ''
 # cmd + alt - x : yabai -m space --focus recent
 # cmd + alt - 1 : yabai -m space --focus 1
 
-# send window to desktop and follow focus
+# Send window to next space
+# TODO: follow focus without deactivating system integrity protection (SIP)
 ctrl + cmd + alt + shift - right : yabai -m window --space next; echo 'shift right'
 ctrl + cmd + alt + shift - left : yabai -m window --space prev; echo 'shift left'
 
+# send window to desktop and follow focus
 # ctrl + cmd + alt + shift - right : yabai -m window --space next; osascript -e 'tell application "System Events" to key code 124 using control down'
 # shift + cmd - 2 : yabai -m window --space  2; yabai -m space --focus 2
 
@@ -148,23 +150,12 @@ ctrl + cmd + alt + shift - left : yabai -m window --space prev; echo 'shift left
 # shift + alt - w : yabai -m window --resize top:0:-20
 
 # decrease window size
-ctrl + alt + cmd - s : yabai -m window --resize bottom:0:-20
+# ctrl + alt + cmd - s : yabai -m window --resize bottom:0:-20
 # shift + cmd - w : yabai -m window --resize top:0:20
 
-# gambiarra do echo
-ctrl + alt + cmd - o : ~/.config/skhd/organize_windows.py | echo ''
-
-ctrl + alt + cmd - p : ~/.config/skhd/rotate_windows.py | echo ''
-
-
-ctrl + alt + cmd - i : yabai -m window --toggle zoom-parent
-
-
-
-# ctrl + alt + cmd - p : yabai -m space --rotate 90
-
-# ctrl + alt + cmd - u : yabai -m space --layout float
-
+# Automatically tile windows
+ctrl + alt + cmd - o : ~/.config/skhd/organize_windows.py | echo 'activate/deactivate organize_windows'
+ctrl + alt + cmd - p : ~/.config/skhd/rotate_windows.py | echo 'rotate_windows'
 
 # set insertion point in focused container
 # ctrl + alt - h : yabai -m window --insert west

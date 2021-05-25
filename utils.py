@@ -1,8 +1,10 @@
 import os
 import ast
 import random
+from pathlib import Path
 
-filename = r'/Users/gssc/.config/skhd/tmp.txt'
+home = str(Path.home())
+filename = home + r'/.config/skhd/tmp.txt'
 
 def get_layout_type():
 	os.system("yabai -m query --spaces --display | jq 'map(select(.\"focused\" == 1))' | jq '.[0].type' > %s" % filename)
