@@ -18,3 +18,7 @@ $ git pull
 To make sure everything is working you can just execute the python scripts from your terminal.
 
 Enjoy!
+
+# My shortcuts
+
+My shortcuts to split the windows use control-option-command + arrow-key. I choose this combination to aviod conflicting shortcuts with the system defaults. You can check the full list on the `skhdrc` file :)
